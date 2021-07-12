@@ -9,7 +9,7 @@ An Extensible Wrapper for Node Config
 
 <a name="intro">Introduction</a>
 --------------------------------
-An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted 
+An extensible wrapper of the popular config package, supporting placeholder resolution (or variable expansion), encrypted 
 and default (fallback) values.
 
 <a name="usage">Usage</a>

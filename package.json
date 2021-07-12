@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution and encrypted values.",
   "author" : "Craig Parravicini",
-  "keywords": ["config","property","placeholder","encrytped","jasypt"],
+  "keywords": ["config","property","placeholder","variable","expansion","expand","encrytped","jasypt"],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
