@@ -1,0 +1,48 @@
+{
+  "name": "@alt-javascript/config",
+  "version": "1.0.0",
+  "description": "An extensible wrapper of the popular config package, supporting placeholder resolution and encrypted values.",
+  "author" : "Craig Parravicini",
+  "keywords": ["config","property","placeholder","encrytped","jasypt"],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/craigparra/alt-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/craigparra/alt-config"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint \"./*.js\" \"./test/**/*.js\" --fix",
+    "test": "npm run test:unit",
+    "test:unit": "npm run test:tdd",
+    "test:tdd": "mocha --require test/fixtures",
+    "test:bdd": "npm run cucumber",
+    "coverage": "npm run nyc",
+    "mocha": "mocha --require test/fixtures",
+    "cucumber": "npx run-script-os",
+    "cucumber:windows": ".\\node_modules\\.bin\\cucumber-js.cmd features\\*.feature --publish-quiet",
+    "cucumber:macos:nix:default": "./node_modules/.bin/cucumber-js features\\*.feature --publish-quiet",
+    "nyc": "nyc --reporter=json-summary --reporter=text-summary --reporter=lcov npm run test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.3.6",
+    "jasypt": "^1.0.5",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.3.0",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.3.4",
+    "cucumber": "^7.0.0-rc.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-cucumber": "^1.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "mocha": "^9.0.2",
+    "nyc": "^15.1.0",
+    "run-script-os": "^1.1.6"
+  }
+}

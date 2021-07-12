@@ -1,0 +1,7 @@
+/.nyc_output
+/config
+/coverage
+/features
+/test
+/node_modules
+.*

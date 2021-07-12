@@ -1,0 +1,13 @@
+{
+  "key": "value",
+  "one" : "one",
+  "placeholder": "start.${one}.${nested.two}.end",
+  "placeholderEncrypted": "start.${nested.encrypted}.end",
+  "nested" : {
+     "key" : "value",
+     "two" : "two",
+     "placeholder": "start.${one}.${nested.two}.end",
+     "encrypted" : "enc.pxQ6z9s/LRpGB+4ddJ8bsq8RqELmhVU2",
+     "encryptedWithSecret" : "enc./emLGkD3cbfqoSPijGZ0jh1p1SYIHQeJ"
+  }
+}
