@@ -37,10 +37,7 @@ module.exports = class URLResolver extends SelectiveResolver {
 
     fetch(url, opts)
         .then(res => res.json())
-        .then(json => {
-          fetchedValue = json;
-          console.log(`fetched => ${JSON.stringify(fetchedValue)}`);}
-        );
+        .then(json => fetchedValue = json);
     return fetchedValue;
   }
 
