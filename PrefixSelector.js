@@ -4,7 +4,7 @@ const Selector = require('./Selector');
 module.exports = class PrefixSelector extends Selector {
   constructor(prefix) {
     super();
-    this.prefix = prefix || 'enc.';
+    this.prefix = prefix;
   }
 
   matches(value) {
