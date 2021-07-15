@@ -8,6 +8,7 @@ const PlaceHolderSelector = require('./PlaceHolderSelector');
 const PrefixSelector = require('./PrefixSelector');
 const SelectiveResolver = require('./SelectiveResolver');
 const Selector = require('./Selector');
+const URLResolver = require('./URLResolver');
 const ValueResolvingConfig = require('./ValueResolvingConfig');
 const ConfigFactory = require('./ConfigFactory');
 
@@ -23,6 +24,7 @@ module.exports = {
   Resolver,
   SelectiveResolver,
   Selector,
+  URLResolver,
   ValueResolvingConfig,
   config: ConfigFactory.getConfig(),
 };

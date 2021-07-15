@@ -16,7 +16,7 @@ module.exports = class URLResolver extends SelectiveResolver {
         try {
           const selectedValue = self.selector.resolveValue(v);
           const fetchedValue = this.fetch(selectedValue);
-          return decryptedValue;
+          return fetchedValue;
         } catch (e) {
           return v;
         }
@@ -26,17 +26,21 @@ module.exports = class URLResolver extends SelectiveResolver {
     return resolvedConfig;
   }
 
-  fetch (url,authorization,method,body,headers){
+  async fetch (url,authorization,method,body,headers){
     let _headers = authorization ? {'authorization':authorization} : {};
-    let fetchedValue = '';
     _.assignIn(_headers,headers)
-    fetch('url', {
-      method: method || 'get',
-      body:    JSON.stringify(body||{}),
-      headers: _headers,
-    })
+    let opts = {method: method || 'get',headers: _headers}
+    if (method && method?.lowerCase()!='get'  && method?.lowerCase() != 'head'){
+      _.assignIn(opts,JSON.stringify(body||{}))
+    }
+    let fetchedValue = '';
+
+    fetch(url, opts)
         .then(res => res.json())
-        .then(json => fetchedValue = JSON.parse(json));
+        .then(json => {
+          fetchedValue = json;
+          console.log(`fetched => ${JSON.stringify(fetchedValue)}`);}
+        );
     return fetchedValue;
   }
 
