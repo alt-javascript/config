@@ -20,4 +20,8 @@ module.exports = class ValueResolvingConfig extends DelegatingConfig {
     }
     return new ValueResolvingConfig(this.config, this.resolver, path).resolved_config;
   }
+
+  async fetch (path, defaultValue){
+    return this.get(path, defaultValue);
+  }
 };

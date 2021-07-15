@@ -12,8 +12,8 @@ const ephemeralConfig = new EphemeralConfig({
   },
 });
 
-const config = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector()));
-const secretconfig = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector(), 'secret'));
+const config = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.')));
+const secretconfig = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
 // const spec = '@demo/config/test/EphemeralConfigSpec.js';
 

@@ -4,7 +4,7 @@ const {
   ValueResolvingConfig, config, JasyptDecryptor, PrefixSelector,
 } = require('..');
 
-const secretconfig = new ValueResolvingConfig(npmconfig, new JasyptDecryptor(new PrefixSelector(), 'secret'));
+const secretconfig = new ValueResolvingConfig(npmconfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
 // const spec = '@cloud-pad-min/config/test/console_spec.js';
 
