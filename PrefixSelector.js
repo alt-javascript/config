@@ -14,4 +14,8 @@ module.exports = class PrefixSelector extends Selector {
   resolveValue(value) {
     return _.replace(value, this.prefix, '');
   }
+
+  async asyncResolveValue(value) {
+    return resolveValue(value);
+  }
 };

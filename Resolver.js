@@ -7,4 +7,12 @@ module.exports = class Resolver {
     }
     return callback(values);
   }
+
+  async asyncMapValuesDeep(values, callback) {
+    if (_.isObject(values)) {
+      return _.mapValues(values, async (v) => this.asyncMapValuesDeep(v, callback));
+    }
+    return callback(values);
+  }
+
 };

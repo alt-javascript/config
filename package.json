@@ -31,6 +31,7 @@
     "test:bdd": "npm run cucumber",
     "coverage": "npm run nyc",
     "mocha": "mocha --require test/fixtures",
+    "URL": "mocha --require test/fixtures --grep 'URL'",
     "cucumber": "npx run-script-os",
     "cucumber:windows": ".\\node_modules\\.bin\\cucumber-js.cmd features\\*.feature --publish-quiet",
     "cucumber:macos:nix:default": "./node_modules/.bin/cucumber-js features\\*.feature --publish-quiet",

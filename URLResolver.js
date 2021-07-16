@@ -14,8 +14,23 @@ module.exports = class URLResolver extends SelectiveResolver {
     const resolvedConfig = Resolver.prototype.mapValuesDeep(config, (v) => {
       if (self.selector.matches(v)) {
         try {
+          return v;
+        } catch (e) {
+          return v;
+        }
+      }
+      return v;
+    });
+    return resolvedConfig;
+  }
+
+  async asyncResolve(config) {
+    const self = this;
+    const resolvedConfig = await Resolver.prototype.asyncMapValuesDeep(config, async (v) => {
+      if (self.selector.matches(v)) {
+        try {
           const selectedValue = self.selector.resolveValue(v);
-          const fetchedValue = this.fetch(selectedValue);
+          const fetchedValue = await this.fetch(selectedValue);
           return fetchedValue;
         } catch (e) {
           return v;
@@ -33,12 +48,7 @@ module.exports = class URLResolver extends SelectiveResolver {
     if (method && method?.lowerCase()!='get'  && method?.lowerCase() != 'head'){
       _.assignIn(opts,JSON.stringify(body||{}))
     }
-    let fetchedValue = '';
-
-    fetch(url, opts)
-        .then(res => res.json())
-        .then(json => fetchedValue = json);
-    return fetchedValue;
+    return await fetch(url, opts).then(res => res.json());
   }
 
 };

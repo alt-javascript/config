@@ -5,10 +5,16 @@ const {
 
 const ephemeralConfig = new EphemeralConfig({
 
-    github: {
-      users: 'url.https://api.github.com/users/github'
+    jsonplaceholder: {
+      todos: 'url.https://jsonplaceholder.typicode.com/todos/1'
     },
-    fetch : {url:'',authorization: '',method:'post',body:{},headers:{}}
+    fetchit : {
+        url: 'url.https://jsonplaceholder.typicode.com/todos/1',
+        authorization: 'Basic dXNlcjpwYXNz',
+        method: 'get',
+        body: {},
+        headers: {'Content-Type': 'application/json'}
+    }
 
 });
 
@@ -38,11 +44,16 @@ beforeEach(async () => {
   // console.log(`${spec} each setup completed`);
 });
 
-describe('Simple URL resolution against github', () => {
-  it('config fetches from github ', async () => {
-    assert.isTrue(config.has('github.users'), "config has 'github.users'");
-    const users = await config.get('github.users');
-//    assert.exists(config.get('github.users'), "'github.users' resolves and exists");
-//    console.log(config.get('github.users'));
+describe('Simple URL resolution', () => {
+  it('config fetches from jsonplaceholder ', async () => {
+    assert.isTrue(config.has('jsonplaceholder.todos'), "config has 'jsonplaceholder.todos'");
+    const todos = await config.fetch('jsonplaceholder.todos');
+    assert.equal(todos.userId, 1, "to userid = 1");
+    const fetchit = await config.fetch('fetchit.url');
   });
+
+    it('config fetches from jsonplaceholder with options', async () => {
+        const fetchit = await config.fetch('fetchit.url');
+        assert.equal(fetchit.userId, 1, "to userid = 1");
+    });
 });
