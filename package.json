@@ -1,7 +1,7 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.1",
-  "description": "An extensible wrapper of the popular config package, supporting placeholder resolution and encrypted values.",
+  "version": "1.0.2",
+  "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
     "config",
@@ -12,7 +12,9 @@
     "expansion",
     "expand",
     "encrypted",
-    "jasypt"
+    "jasypt",
+    "url",
+    "fetch"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -31,7 +33,6 @@
     "test:bdd": "npm run cucumber",
     "coverage": "npm run nyc",
     "mocha": "mocha --require test/fixtures",
-    "URL": "mocha --require test/fixtures --grep 'URL'",
     "cucumber": "npx run-script-os",
     "cucumber:windows": ".\\node_modules\\.bin\\cucumber-js.cmd features\\*.feature --publish-quiet",
     "cucumber:macos:nix:default": "./node_modules/.bin/cucumber-js features\\*.feature --publish-quiet",

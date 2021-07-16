@@ -9,8 +9,11 @@ An Extensible Wrapper for Node Config
 
 <a name="intro">Introduction</a>
 --------------------------------
-An extensible wrapper of the popular config package, supporting placeholder resolution (or variable expansion), encrypted 
-and default (fallback) values.
+An extensible wrapper of the popular config package, supporting:
+- placeholder resolution (or variable expansion),
+- encrypted values (via jasypt) 
+- default (or fallback) values, 
+- and asynchronous url fetching.
 
 <a name="usage">Usage</a>
 -------------------------
@@ -33,6 +36,24 @@ Config values that start with the prefix `enc.` will be decrypted with the
 [jasypt](https://www.npmjs.com/package/jasypt) package port, with the passphrase being
 sourced from the `process.env.NODE_CONFIG_PASSPHRASE` environment variable.
 
+Config values that start with the prefix `url.` can be fetched and resolved asynchronously with the `fetch` function,
+and HTTP options can be specified as in the example config file.
+
+```javascript
+const config = require('@alt-javascript/config');
+await config.fetch('pathToUrlPrefixedValue'); // this does not throw an error
+```
+> :warning: - while we have implemented asynchronous fetch from "the network", we discourage it.  
+> 
+> It's mostly a design flex.
+> 
+> Configuration should be static and immutable contextual information your system needs on application bootstrap, and 
+> configuration as a service increases the complexity of your deployment architecture, making it difficult to configure
+> different, and ephemeral deployment options, including local development and testing.
+> 
+> Don't say we didn't warn you.
+
+
 `local-development.json`
 ```json
 {
@@ -46,6 +67,16 @@ sourced from the `process.env.NODE_CONFIG_PASSPHRASE` environment variable.
     "placeholder": "start.${one}.${nested.two}.end",
     "encrypted" : "enc.pxQ6z9s/LRpGB+4ddJ8bsq8RqELmhVU2",
     "encryptedWithSecret" : "enc./emLGkD3cbfqoSPijGZ0jh1p1SYIHQeJ"
+  },
+  "jsonplaceholder": {
+    "todos": "url.https://jsonplaceholder.typicode.com/todos/1"
+  },
+  "fetchWithOpts" : {
+    "url": "url.https://jsonplaceholder.typicode.com/todos/1",
+    "authorization": "Basic dXNlcjpwYXNz",
+    "method": "get",
+    "body": {},
+    "headers": {"Content-Type": "application/json"}
   }
 }
 ```

@@ -15,7 +15,7 @@ const ephemeralConfig = new EphemeralConfig({
 const config = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.')));
 const secretconfig = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
-// const spec = '@demo/config/test/EphemeralConfigSpec.js';
+// const spec = '@demo/config/test/EphemeralConfig.spec.js';
 
 before(async () => {
   // // console.log(`${spec} spec setup started`);
