@@ -24,13 +24,18 @@ module.exports = class URLResolver extends SelectiveResolver {
     return resolvedConfig;
   }
 
-  async asyncResolve(config) {
+  async asyncResolve(config, parentConfig, path) {
     const self = this;
     const resolvedConfig = await Resolver.prototype.asyncMapValuesDeep(config, async (v) => {
       if (self.selector.matches(v)) {
         try {
           const selectedValue = self.selector.resolveValue(v);
-          const fetchedValue = await this.fetch(selectedValue);
+          let urlPath = path.substring(0,path.lastIndexOf('.'));
+          let method = parentConfig.has(`${urlPath}.method`) ? parentConfig.get(`${urlPath}.method`) : null;
+          let authorization = parentConfig.has(`${urlPath}.authorization`) ? parentConfig.get(`${urlPath}.authorization`) : null;
+          let body = parentConfig.has(`${urlPath}.body`) ? parentConfig.get(`${urlPath}.body`) : null;
+          let headers = parentConfig.has(`${urlPath}.headers`) ? parentConfig.get(`${urlPath}.headers`) : null;
+          const fetchedValue = await this.fetch(selectedValue,authorization,method,body,headers);
           return fetchedValue;
         } catch (e) {
           return v;
@@ -45,7 +50,7 @@ module.exports = class URLResolver extends SelectiveResolver {
     let _headers = authorization ? {'authorization':authorization} : {};
     _.assignIn(_headers,headers)
     let opts = {method: method || 'get',headers: _headers}
-    if (method && method?.lowerCase()!='get'  && method?.lowerCase() != 'head'){
+    if (method && method?.toLowerCase()!='get'  && method?.toLowerCase() != 'head'){
       _.assignIn(opts,JSON.stringify(body||{}))
     }
     return await fetch(url, opts).then(res => res.json());
