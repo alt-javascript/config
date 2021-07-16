@@ -41,9 +41,9 @@ and HTTP options can be specified as in the example config file.
 
 ```javascript
 const config = require('@alt-javascript/config');
-await config.fetch('pathToUrlPrefixedValue'); // this does not throw an error
+const webdata = await config.fetch('pathToUrlPrefixedValue'); 
 ```
-> :warning: - while we have implemented asynchronous fetch from "the network", we discourage it.  
+> :warning: While we have implemented asynchronous fetch from "the network", we discourage it.  
 > 
 > It's mostly a design flex.
 > 
