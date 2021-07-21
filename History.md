@@ -1,3 +1,8 @@
+1.0.4 / 2021-07-21
+==================
+
+* Reverted exports, updated README.md - @craigparra
+  
 1.0.3 / 2021-07-21
 ==================
 

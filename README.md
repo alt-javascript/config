@@ -22,7 +22,7 @@ To use the module, simply import the substituted package as you would with the p
 [config](https://www.npmjs.com/package/config) package
 
 ```javascript
-const config = require('@alt-javascript/config');
+const {config} = require('@alt-javascript/config');
 
 config.get('key');
 config.get('nested.key');
@@ -40,7 +40,7 @@ Config values that start with the prefix `url.` can be fetched and resolved asyn
 and HTTP options can be specified as in the example config file.
 
 ```javascript
-const config = require('@alt-javascript/config');
+const {config} = require('@alt-javascript/config');
 const webdata = await config.fetch('pathToUrlPrefixedValue'); 
 ```
 > :warning: While we have implemented asynchronous fetch from "the network", we discourage it.  
