@@ -11,7 +11,7 @@ const Selector = require('./Selector');
 const URLResolver = require('./URLResolver');
 const ValueResolvingConfig = require('./ValueResolvingConfig');
 const ConfigFactory = require('./ConfigFactory');
-
+let config = ConfigFactory.getConfig(),
 module.exports = {
   ConfigFactory,
   DelegatingConfig,
@@ -26,5 +26,6 @@ module.exports = {
   Selector,
   URLResolver,
   ValueResolvingConfig,
-  config: ConfigFactory.getConfig(),
+  config,
+  default: config
 };
