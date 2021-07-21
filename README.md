@@ -18,8 +18,9 @@ An extensible wrapper of the popular config package, supporting:
 <a name="usage">Usage</a>
 -------------------------
 
-To use the module, simply import the substituted package as you would with the popular 
-[config](https://www.npmjs.com/package/config) package
+To use the module, substitute the named {config} module export, in place of the popular 
+[config](https://www.npmjs.com/package/config) default &ndash; note, we use named exports, because the module
+exports other useful classes as well.
 
 ```javascript
 const {config} = require('@alt-javascript/config');

@@ -1,3 +1,9 @@
+1.0.5 / 2021-07-21
+==================
+
+* Updated README.md for named exports - @craigparra
+
+
 1.0.4 / 2021-07-21
 ==================
 
