@@ -1,3 +1,4 @@
+process.env.PROVIDED_ENV_VAR = 'provided-index-value';
 const npmconfig = require('config');
 const { assert } = require('chai');
 const {
@@ -60,5 +61,11 @@ describe('Simple encrypted properties and placeholders', () => {
   it('config place holders are resolved ', () => {
     assert.equal(config.get('placeholder'), 'start.one.two.end', 'config placeholder == start.one.two.end');
     assert.equal(config.get('placeholderEncrypted'), 'start.hello world.end', 'config placeholderEncrypted == start.hello world.end');
+  });
+
+  it('local-development env vars are resolved ', () => {
+    //assert.equal(npmconfig.get('providedEnvVar'), 'system', 'config.get(\'providedEnvVar\') == system');
+    assert.equal(process.env.PROVIDED_ENV_VAR, 'provided-index-value', 'process.env.PROVIDED_ENV_VAR == provided-index-value');
+    assert.equal(npmconfig.get('missingEnvVar'), 'missing-local-value', 'config.get(\'missingEnvVar\') == missing-local-dev-value');
   });
 });

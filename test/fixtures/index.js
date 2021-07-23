@@ -1,6 +1,6 @@
 exports.mochaGlobalSetup = async function setup() {
   // console.log(`mocha global setup: started`);
-  //  ...
+  // ...
   // console.log(`mocha global setup: completed`);
 };
 

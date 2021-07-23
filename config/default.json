@@ -1,0 +1,4 @@
+{
+  "providedEnvVar": "provided-default-value",
+  "missingEnvVar": "missing-default-value"
+}
