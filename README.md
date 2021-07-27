@@ -110,6 +110,13 @@ const ephemeralConfig = new EphemeralConfig({
 const placeHolderResolver = new PlaceHolderResolver(new PlaceHolderSelector());
 const config = new ValueResolvingConfig(ephemeralConfig,placeHolderResolver );
 ```
+<a name="resources">Resources</a>
+---------------------------------
+
+<https://github.com/craigparra/alt-javascript>  has a
+useful [Design Trail](https://github.com/craigparra/alt-javascript/blob/master/CONFIGURATION.md) available for this
+module.
+
 
 <a name="license">License</a>
 -----------------------------
