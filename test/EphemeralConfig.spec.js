@@ -1,7 +1,10 @@
 const { assert } = require('chai');
+const { LoggerFactory } = require('@alt-javascript/logger');
 const {
   EphemeralConfig, ValueResolvingConfig, JasyptDecryptor, PrefixSelector,
 } = require('..');
+
+const logger = LoggerFactory.getLogger('@alt-javascript/config/test/EphemeralConfig_spec');
 
 const ephemeralConfig = new EphemeralConfig({
   key: 'value',
@@ -15,33 +18,30 @@ const ephemeralConfig = new EphemeralConfig({
 const config = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.')));
 const secretconfig = new ValueResolvingConfig(ephemeralConfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
-// const spec = '@demo/config/test/EphemeralConfig.spec.js';
-
 before(async () => {
-  // // console.log(`${spec} spec setup started`);
+  logger.debug('spec setup started');
   // ..
-  // // console.log(`${spec} spec setup completed`);
+  logger.debug('spec setup completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('spec setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('spec setup completed');
 });
 
 after(async () => {
-  // console.log(`${spec} each teardown started`);
+  logger.debug('each teardown started');
   // ...
-  // console.log(`${spec} each teardown completed`);
+  logger.debug('each teardown completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('each setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('each setup completed');
 });
-
-describe('Simple encrypted properties', () => {
+describe('EphemeralConfig Specification', () => {
   it('config has ', () => {
     assert.isTrue(config.has('key'), "config kas 'key'");
     assert.isFalse(config.has('unknown'), "config does not have ''unknown'");

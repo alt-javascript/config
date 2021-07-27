@@ -13,7 +13,7 @@ An extensible wrapper of the popular config package, supporting:
 - placeholder resolution (or variable expansion),
 - encrypted values (via jasypt) 
 - default (or fallback) values, 
-- and asynchronous url fetching.
+- and optional asynchronous url fetching.
 
 <a name="usage">Usage</a>
 -------------------------
@@ -37,11 +37,16 @@ Config values that start with the prefix `enc.` will be decrypted with the
 [jasypt](https://www.npmjs.com/package/jasypt) package port, with the passphrase being
 sourced from the `process.env.NODE_CONFIG_PASSPHRASE` environment variable.
 
-Config values that start with the prefix `url.` can be fetched and resolved asynchronously with the `fetch` function,
-and HTTP options can be specified as in the example config file.
+Optionally, config values that start with the prefix `url.` can be fetched and resolved asynchronously with the `fetch` 
+function, and HTTP options can be specified as in the example config file.  To avoid bundling `node-fetch`, you need to
+provide it by using `@alt-javascript/boot` to boot it into the global root context, where the package will detect it.
 
 ```javascript
+const {boot} = require('@alt-javascript/boot');
 const {config} = require('@alt-javascript/config');
+const fetch = require('node-fetch');
+
+boot({config,fetch})
 const webdata = await config.fetch('pathToUrlPrefixedValue'); 
 ```
 > :warning: While we have implemented asynchronous fetch from "the network", we discourage it.  

@@ -1,11 +1,29 @@
+process.env.NODE_CONFIG_PASSPHRASE = 'changeit';
+
+const { boot } = require('@alt-javascript/boot');
+
+const { CachingLoggerFactory, LoggerCategoryCache, LoggerFactory } = require('@alt-javascript/logger');
+const { config } = require('../../index');
+
+const loggerCategoryCache = new LoggerCategoryCache();
+const cachingLoggerFactory = new CachingLoggerFactory(config, loggerCategoryCache);
+
+if (config.get('logging.test.fixtures.quiet', true)) {
+  boot({ config, loggerFactory: cachingLoggerFactory, loggerCategoryCache });
+} else {
+  boot({ config });
+}
+
+const logger = LoggerFactory.getLogger('@alt-javascript/config/test/fixtures/index');
+
 exports.mochaGlobalSetup = async function setup() {
-  // console.log(`mocha global setup: started`);
-  // ...
-  // console.log(`mocha global setup: completed`);
+  logger.verbose('mocha global setup: started');
+
+  logger.verbose('mocha global setup: completed');
 };
 
 exports.mochaGlobalTeardown = async function teardown() {
-  // console.log(`mocha global teardown: started`);
+  logger.verbose('mocha global teardown: started');
   //  ...
-  // console.log(`mocha global teardown: completed`);
+  logger.verbose('mocha global teardown: completed');
 };

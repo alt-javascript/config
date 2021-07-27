@@ -16,6 +16,6 @@ module.exports = class PrefixSelector extends Selector {
   }
 
   async asyncResolveValue(value) {
-    return resolveValue(value);
+    return this.resolveValue(value);
   }
 };

@@ -1,3 +1,9 @@
+1.0.6 / 2021-07-27
+==================
+
+* Remove node-fetch dependency, must inject/boot - @craigparra
+* Tidy tests and lint - @craigparra
+  
 1.0.5 / 2021-07-21
 ==================
 

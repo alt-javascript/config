@@ -21,12 +21,15 @@ module.exports = class ValueResolvingConfig extends DelegatingConfig {
     return new ValueResolvingConfig(this.config, this.resolver, path).resolved_config;
   }
 
-  async fetch (path, defaultValue){
-    let self = this;
+  async fetch(path, defaultValue) {
+    const self = this;
     if (defaultValue && this.has(path) === false) {
       return defaultValue;
     }
-    let asyncConfig = new ValueResolvingConfig(this.config, this.resolver, path, true);
-    return await asyncConfig.resolver.asyncResolve(asyncConfig.path == null ? asyncConfig : asyncConfig.config.get(asyncConfig.path),self,path);
+    const asyncConfig = new ValueResolvingConfig(this.config, this.resolver, path, true);
+    return asyncConfig.resolver.asyncResolve(
+      asyncConfig.path == null ? asyncConfig : asyncConfig.config.get(asyncConfig.path),
+      self, path,
+    );
   }
 };

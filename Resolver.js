@@ -14,5 +14,4 @@ module.exports = class Resolver {
     }
     return callback(values);
   }
-
 };

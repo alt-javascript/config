@@ -1,6 +1,6 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
@@ -42,10 +42,11 @@
   "dependencies": {
     "config": "^3.3.6",
     "jasypt": "^1.0.5",
-    "lodash": "^4.17.21",
-    "node-fetch": "^2.6.1"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@alt-javascript/boot": "^1.0.3",
+    "@alt-javascript/logger": "^1.1.5",
     "@cucumber/cucumber": "^7.3.0",
     "babel-eslint": "^10.1.0",
     "chai": "^4.3.4",
@@ -56,6 +57,7 @@
     "eslint-plugin-cucumber": "^1.4.0",
     "eslint-plugin-import": "^2.23.4",
     "mocha": "^9.0.2",
+    "node-fetch": "^2.6.1",
     "nyc": "^15.1.0",
     "run-script-os": "^1.1.6"
   }

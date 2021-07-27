@@ -1,39 +1,40 @@
 process.env.PROVIDED_ENV_VAR = 'provided-index-value';
 const npmconfig = require('config');
 const { assert } = require('chai');
+const { LoggerFactory } = require('@alt-javascript/logger');
 const {
   ValueResolvingConfig, config, JasyptDecryptor, PrefixSelector,
 } = require('..');
 
+const logger = LoggerFactory.getLogger('@alt-javascript/config/test/ValueResolvingConfig_spec');
+
 const secretconfig = new ValueResolvingConfig(npmconfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
-// const spec = '@cloud-pad-min/config/test/console_spec.js';
-
 before(async () => {
-  // // console.log(`${spec} spec setup started`);
+  logger.debug('spec setup started');
   // ..
-  // // console.log(`${spec} spec setup completed`);
+  logger.debug('spec setup completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('spec setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('spec setup completed');
 });
 
 after(async () => {
-  // console.log(`${spec} each teardown started`);
+  logger.debug('each teardown started');
   // ...
-  // console.log(`${spec} each teardown completed`);
+  logger.debug('each teardown completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('each setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('each setup completed');
 });
 
-describe('Simple encrypted properties and placeholders', () => {
+describe('ValueResolvingConfig Specification', () => {
   it('config has ', () => {
     assert.isTrue(config.has('key'), "config kas 'key'");
     assert.isFalse(config.has('unknown'), "config does not have ''unknown'");
@@ -64,7 +65,8 @@ describe('Simple encrypted properties and placeholders', () => {
   });
 
   it('local-development env vars are resolved ', () => {
-    //assert.equal(npmconfig.get('providedEnvVar'), 'system', 'config.get(\'providedEnvVar\') == system');
+    // assert.equal(npmconfig.get('providedEnvVar'), 'system',
+    // 'config.get(\'providedEnvVar\') == system');
     assert.equal(process.env.PROVIDED_ENV_VAR, 'provided-index-value', 'process.env.PROVIDED_ENV_VAR == provided-index-value');
     assert.equal(npmconfig.get('missingEnvVar'), 'missing-local-value', 'config.get(\'missingEnvVar\') == missing-local-dev-value');
   });

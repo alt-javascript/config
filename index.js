@@ -26,5 +26,5 @@ module.exports = {
   Selector,
   URLResolver,
   ValueResolvingConfig,
-  config : ConfigFactory.getConfig()
+  config: ConfigFactory.getConfig(),
 };

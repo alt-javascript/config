@@ -1,59 +1,64 @@
 const { assert } = require('chai');
+const fetch = require('node-fetch');
+const { LoggerFactory } = require('@alt-javascript/logger');
 const {
   EphemeralConfig, ValueResolvingConfig, URLResolver, PrefixSelector,
 } = require('..');
 
+const logger = LoggerFactory.getLogger('@alt-javascript/config/test/URLResolver_spec');
+
 const ephemeralConfig = new EphemeralConfig({
 
-    jsonplaceholder: {
-      todos: 'url.https://jsonplaceholder.typicode.com/todos/1'
-    },
-    fetchit : {
-        url: 'url.https://jsonplaceholder.typicode.com/todos/1',
-        authorization: 'Basic dXNlcjpwYXNz',
-        method: 'get',
-        body: {},
-        headers: {'Content-Type': 'application/json'}
-    }
+  jsonplaceholder: {
+    todos: 'url.https://jsonplaceholder.typicode.com/todos/1',
+  },
+  fetchit: {
+    url: 'url.https://jsonplaceholder.typicode.com/todos/1',
+    authorization: 'Basic dXNlcjpwYXNz',
+    method: 'get',
+    body: {},
+    headers: { 'Content-Type': 'application/json' },
+  },
 
 });
 
-const config = new ValueResolvingConfig(ephemeralConfig, new URLResolver(new PrefixSelector('url.')));
+const config = new ValueResolvingConfig(ephemeralConfig, new URLResolver(new PrefixSelector('url.'), fetch));
 
 before(async () => {
-  // // console.log(`${spec} spec setup started`);
+  logger.debug('spec setup started');
   // ..
-  // // console.log(`${spec} spec setup completed`);
+  logger.debug('spec setup completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('spec setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('spec setup completed');
 });
 
 after(async () => {
-  // console.log(`${spec} each teardown started`);
+  logger.debug('each teardown started');
   // ...
-  // console.log(`${spec} each teardown completed`);
+  logger.debug('each teardown completed');
 });
 
 beforeEach(async () => {
-  // console.log(`${spec} each setup started`);
+  logger.debug('each setup started');
   // ..
-  // console.log(`${spec} each setup completed`);
+  logger.debug('each setup completed');
 });
 
-describe('Simple URL resolution', () => {
+describe('URLResolver Specification', () => {
   it('config fetches from jsonplaceholder ', async () => {
     assert.isTrue(config.has('jsonplaceholder.todos'), "config has 'jsonplaceholder.todos'");
     const todos = await config.fetch('jsonplaceholder.todos');
-    assert.equal(todos.userId, 1, "to userid = 1");
+    assert.equal(todos.userId, 1, 'to userid = 1');
     const fetchit = await config.fetch('fetchit.url');
+    assert.equal(fetchit.userId, 1, 'to userid = 1');
   });
 
-    it('config fetches from jsonplaceholder with options', async () => {
-        const fetchit = await config.fetch('fetchit.url');
-        assert.equal(fetchit.userId, 1, "to userid = 1");
-    });
+  it('config fetches from jsonplaceholder with options', async () => {
+    const fetchit = await config.fetch('fetchit.url');
+    assert.equal(fetchit.userId, 1, 'to userid = 1');
+  });
 });
