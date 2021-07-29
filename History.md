@@ -1,19 +1,7 @@
-1.0.7 / 2021-07-27
+1.0.8 / 2021-07-30
 ==================
 
-* Doco link to design trail - @craigparra
-
-1.0.6 / 2021-07-27
-==================
-
-* Remove node-fetch dependency, must inject/boot - @craigparra
-* Tidy tests and lint - @craigparra
-  
-1.0.5 / 2021-07-21
-==================
-
-* Updated README.md for named exports - @craigparra
-
+* README.md remove resources section - @craigparra
 
 1.0.4 / 2021-07-21
 ==================

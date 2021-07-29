@@ -1,6 +1,6 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
