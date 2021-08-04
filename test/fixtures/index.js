@@ -1,18 +1,11 @@
 process.env.NODE_CONFIG_PASSPHRASE = 'changeit';
 
-const { boot } = require('@alt-javascript/boot');
-
-const { CachingLoggerFactory, LoggerCategoryCache, LoggerFactory } = require('@alt-javascript/logger');
+const { test } = require('@alt-javascript/boot');
+const { LoggerFactory } = require('@alt-javascript/logger');
 const { config } = require('../../index');
+const fetch = require('node-fetch');
 
-const loggerCategoryCache = new LoggerCategoryCache();
-const cachingLoggerFactory = new CachingLoggerFactory(config, loggerCategoryCache);
-
-if (config.get('logging.test.fixtures.quiet', true)) {
-  boot({ config, loggerFactory: cachingLoggerFactory, loggerCategoryCache });
-} else {
-  boot({ config });
-}
+test ({ config, fetch });
 
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/fixtures/index');
 

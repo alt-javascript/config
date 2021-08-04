@@ -3,8 +3,10 @@ const npmconfig = require('config');
 const { assert } = require('chai');
 const { LoggerFactory } = require('@alt-javascript/logger');
 const {
-  ValueResolvingConfig, config, JasyptDecryptor, PrefixSelector,
+  ValueResolvingConfig, ConfigFactory, JasyptDecryptor, PrefixSelector,
 } = require('..');
+
+const config = ConfigFactory.getConfig();
 
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/ValueResolvingConfig_spec');
 

@@ -8,6 +8,26 @@ const PrefixSelector = require('./PrefixSelector');
 const URLResolver = require('./URLResolver');
 
 module.exports = class ConfigFactory {
+
+  static getGlobalRef() {
+    let $globalref = null;
+    if (ConfigFactory.detectBrowser()) {
+      $globalref = window;
+    } else {
+      $globalref = global;
+    }
+    return $globalref;
+  }
+
+  static getGlobalRoot(key) {
+    const $globalref = ConfigFactory.getGlobalRef();
+    let $key = ($globalref && $globalref.boot);
+    $key = $key && $key.contexts;
+    $key = $key && $key.root;
+    $key = $key && $key[`${key}`];
+    return $key;
+  }
+
   static detectBrowser() {
     const browser = !(typeof window === 'undefined');
     return browser;
@@ -19,14 +39,8 @@ module.exports = class ConfigFactory {
       // eslint-disable-next-line no-undef
       $fetch = fetch;
     }
-    if (global?.boot?.contexts?.root?.fetch) {
-      $fetch = global.boot.contexts.root.fetch;
-    }
-    if (ConfigFactory.detectBrowser() && window?.fetch) {
-      $fetch = window.fetch;
-    }
-    if (ConfigFactory.detectBrowser() && window?.boot?.contexts?.root?.fetch) {
-      $fetch = window.boot.contexts.root.fetch;
+    if (ConfigFactory.getGlobalRoot('fetch')) {
+      $fetch = ConfigFactory.getGlobalRoot('fetch');
     }
     $fetch = fetchArg || $fetch;
     return $fetch;

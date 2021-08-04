@@ -1,6 +1,6 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
@@ -29,7 +29,7 @@
     "lint": "npx eslint \"./*.js\" \"./test/**/*.js\" --fix",
     "test": "npm run test:unit",
     "test:unit": "npm run test:tdd",
-    "test:tdd": "cross-env NODE_ENV=npm PROVIDED_ENV_VAR=provided-ext-value mocha --require test/fixtures",
+    "test:tdd": "mocha --require test/fixtures",
     "test:bdd": "npm run cucumber",
     "coverage": "npm run nyc",
     "mocha": "mocha --require test/fixtures",
@@ -45,7 +45,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@alt-javascript/boot": "^1.0.3",
+    "@alt-javascript/boot": "^1.0.9",
     "@alt-javascript/logger": "^1.1.5",
     "@cucumber/cucumber": "^7.3.0",
     "babel-eslint": "^10.1.0",

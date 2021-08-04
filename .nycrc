@@ -1,0 +1,15 @@
+{
+  "cache": false,
+  "check-coverage": true,
+  "lines": 90,
+  "statements": 90,
+  "functions": 90,
+  "branches": 80,
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ],
+  "all": true,
+  "instrument": true
+}

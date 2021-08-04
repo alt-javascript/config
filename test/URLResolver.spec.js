@@ -49,6 +49,12 @@ beforeEach(async () => {
 });
 
 describe('URLResolver Specification', () => {
+
+  it('URLResolver creates default PrefixSelector', async () => {
+    const urlResolver  = new URLResolver();
+    assert.equal(urlResolver.selector.prefix, 'url.', 'urlResolver.selector.prefix == \'url.\'');
+  });
+
   it('config fetches from jsonplaceholder ', async () => {
     assert.isTrue(config.has('jsonplaceholder.todos'), "config has 'jsonplaceholder.todos'");
     const todos = await config.fetch('jsonplaceholder.todos');
@@ -61,4 +67,12 @@ describe('URLResolver Specification', () => {
     const fetchit = await config.fetch('fetchit.url');
     assert.equal(fetchit.userId, 1, 'to userid = 1');
   });
+
+  it('config fetch with default', async () => {
+    const defaultValue = 'default'
+    const fetchit = await config.fetch('no.fetch',defaultValue);
+    assert.equal(fetchit, defaultValue, 'fetchit = defaultValue');
+  });
+
+
 });
