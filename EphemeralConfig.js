@@ -19,7 +19,7 @@ module.exports = class EphemeralConfig {
     if (root) {
       return root;
     }
-    if (defaultValue) {
+    if ((typeof defaultValue !== 'undefined')) {
       return defaultValue;
     }
     throw new Error(`Config path ${path} returned no value.`);

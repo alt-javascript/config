@@ -15,7 +15,7 @@ module.exports = class ValueResolvingConfig extends DelegatingConfig {
   }
 
   get(path, defaultValue) {
-    if (defaultValue && this.has(path) === false) {
+    if ((typeof defaultValue !== 'undefined') && this.has(path) === false) {
       return defaultValue;
     }
     return new ValueResolvingConfig(this.config, this.resolver, path).resolved_config;
