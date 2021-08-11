@@ -70,6 +70,18 @@ describe('EphemeralConfig Specification', () => {
     assert.equal(config.get('unknown', 'hello world'), 'hello world', 'config unknown with default == hello world');
     assert.equal(ephemeralConfig.get('unknown', 'hello world'), 'hello world', 'ephemeralConfig unknown with default == hello world');
   });
+  it('config unknown with default == null', () => {
+    assert.equal(config.get('unknown', null), null, 'config unknown with default == null');
+    assert.equal(ephemeralConfig.get('unknown', null), null, 'ephemeralConfig unknown with default == null');
+  });
+  it('config unknown with default == false', () => {
+    assert.equal(config.get('unknown', false), false, 'config unknown with default == false');
+    assert.equal(ephemeralConfig.get('unknown', false), false, 'ephemeralConfig unknown with default == false');
+  });
+  it('config unknown with default == 0', () => {
+    assert.equal(config.get('unknown', 0), 0, 'config unknown with default == false');
+    assert.equal(ephemeralConfig.get('unknown', 0), 0, 'ephemeralConfig unknown with default == false');
+  });
   it('config unknown without default throws', () => {
     assert.throws(() => { config.get('unknown'); }, Error, 'Config path unknown returned no value.');
   });
