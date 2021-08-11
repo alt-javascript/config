@@ -1,6 +1,6 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
@@ -19,10 +19,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://github.com/craigparra/alt-config#readme",
+  "homepage": "https://github.com/alt-javascript/config#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/craigparra/alt-config"
+    "url": "https://github.com/alt-javascript/config"
   },
   "main": "index.js",
   "scripts": {
