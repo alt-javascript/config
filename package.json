@@ -1,6 +1,6 @@
 {
   "name": "@alt-javascript/config",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "An extensible wrapper of the popular config package, supporting placeholder resolution, encrypted values and url fetch.",
   "author": "Craig Parravicini",
   "keywords": [
@@ -45,8 +45,8 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@alt-javascript/boot": "^1.0.9",
-    "@alt-javascript/logger": "^1.1.5",
+    "@alt-javascript/boot": "^1.0.15",
+    "@alt-javascript/logger": "^1.1.10",
     "@cucumber/cucumber": "^7.3.0",
     "babel-eslint": "^10.1.0",
     "chai": "^4.3.4",
