@@ -9,7 +9,6 @@ import PrefixSelector from './PrefixSelector.js';
 import URLResolver from './URLResolver.js';
 
 export default class ConfigFactory {
-
   static getGlobalRef() {
     let $globalref = null;
     if (ConfigFactory.detectBrowser()) {

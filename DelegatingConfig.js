@@ -7,4 +7,4 @@ export default class DelegatingConfig {
   has(path) {
     return this.config.has(path);
   }
-};
+}

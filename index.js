@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import ConfigFactory from './ConfigFactory.js';
 
-let config = ConfigFactory.getConfig();
+const config = ConfigFactory.getConfig();
 
 export { default as DelegatingConfig } from './DelegatingConfig.js';
 export { default as DelegatingResolver } from './DelegatingResolver.js';

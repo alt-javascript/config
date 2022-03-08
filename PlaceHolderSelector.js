@@ -9,4 +9,4 @@ export default class PlaceHolderSelector extends Selector {
             && value.includes('}')
             && value.indexOf('${') < value.indexOf('}');
   }
-};
+}
