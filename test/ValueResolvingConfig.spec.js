@@ -1,15 +1,15 @@
-process.env.PROVIDED_ENV_VAR = 'provided-index-value';
-const npmconfig = require('config');
-const { assert } = require('chai');
-const { LoggerFactory } = require('@alt-javascript/logger');
-const {
+/* eslint-disable import/extensions */
+import npmconfig from 'config';
+import { assert } from 'chai';
+import { LoggerFactory } from '@alt-javascript/logger';
+import {
   ValueResolvingConfig, ConfigFactory, JasyptDecryptor, PrefixSelector,
-} = require('..');
+} from '../index.js';
+
+process.env.PROVIDED_ENV_VAR = 'provided-index-value';
 
 const config = ConfigFactory.getConfig();
-
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/ValueResolvingConfig_spec');
-
 const secretconfig = new ValueResolvingConfig(npmconfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
 before(async () => {

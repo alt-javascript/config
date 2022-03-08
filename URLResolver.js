@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import _ from 'lodash');
+import _ from 'lodash';
 import Resolver from './Resolver.js';
 import SelectiveResolver from './SelectiveResolver.js';
 import PrefixSelector from './PrefixSelector.js';

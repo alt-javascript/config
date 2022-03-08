@@ -1,8 +1,9 @@
-const { assert } = require('chai');
-const { LoggerFactory } = require('@alt-javascript/logger');
-const {
+/* eslint-disable import/extensions */
+import { assert } from 'chai';
+import { LoggerFactory } from '@alt-javascript/logger';
+import {
   EphemeralConfig, ValueResolvingConfig, JasyptDecryptor, PrefixSelector,
-} = require('..');
+} from '../index.js';
 
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/EphemeralConfig_spec');
 

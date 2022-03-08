@@ -1,9 +1,10 @@
-const { assert } = require('chai');
-const fetch = require('node-fetch');
-const { LoggerFactory } = require('@alt-javascript/logger');
-const {
+/* eslint-disable import/extensions */
+import { assert } from 'chai';
+import fetch from 'node-fetch';
+import { LoggerFactory } from '@alt-javascript/logger';
+import {
   EphemeralConfig, ValueResolvingConfig, URLResolver, PrefixSelector,
-} = require('..');
+} from '../index.js';
 
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/URLResolver_spec');
 
@@ -49,9 +50,8 @@ beforeEach(async () => {
 });
 
 describe('URLResolver Specification', () => {
-
   it('URLResolver creates default PrefixSelector', async () => {
-    const urlResolver  = new URLResolver();
+    const urlResolver = new URLResolver();
     assert.equal(urlResolver.selector.prefix, 'url.', 'urlResolver.selector.prefix == \'url.\'');
   });
 
@@ -69,10 +69,8 @@ describe('URLResolver Specification', () => {
   });
 
   it('config fetch with default', async () => {
-    const defaultValue = 'default'
-    const fetchit = await config.fetch('no.fetch',defaultValue);
+    const defaultValue = 'default';
+    const fetchit = await config.fetch('no.fetch', defaultValue);
     assert.equal(fetchit, defaultValue, 'fetchit = defaultValue');
   });
-
-
 });
