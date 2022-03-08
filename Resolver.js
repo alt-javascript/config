@@ -1,6 +1,6 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
-module.exports = class Resolver {
+export default class Resolver {
   mapValuesDeep(values, callback) {
     if (_.isObject(values)) {
       return _.mapValues(values, (v) => this.mapValuesDeep(v, callback));
@@ -14,4 +14,4 @@ module.exports = class Resolver {
     }
     return callback(values);
   }
-};
+}

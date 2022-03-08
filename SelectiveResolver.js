@@ -1,8 +1,9 @@
-const Resolver = require('./Resolver');
+/* eslint-disable import/extensions */
+import Resolver from './Resolver.js';
 
-module.exports = class SelectiveResolver extends Resolver {
+export default class SelectiveResolver extends Resolver {
   constructor(selector) {
     super();
     this.selector = selector;
   }
-};
+}

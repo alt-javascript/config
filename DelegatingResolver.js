@@ -1,6 +1,7 @@
-const Resolver = require('./Resolver');
+/* eslint-disable import/extensions */
+import Resolver from './Resolver.js';
 
-module.exports = class DelegatingResolver extends Resolver {
+export default class DelegatingResolver extends Resolver {
   constructor(resolvers) {
     super();
     this.resolvers = resolvers;
@@ -13,4 +14,4 @@ module.exports = class DelegatingResolver extends Resolver {
     }
     return resolvedConfig;
   }
-};
+}

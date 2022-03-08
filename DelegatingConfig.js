@@ -1,4 +1,4 @@
-module.exports = class DelegatingConfig {
+export default class DelegatingConfig {
   constructor(config, path) {
     this.config = config;
     this.path = path;

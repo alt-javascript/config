@@ -1,7 +1,8 @@
-const _ = require('lodash');
-const DelegatingConfig = require('./DelegatingConfig');
+/* eslint-disable import/extensions */
+import _ from 'lodash';
+import DelegatingConfig from './DelegatingConfig.js';
 
-module.exports = class ValueResolvingConfig extends DelegatingConfig {
+export default class ValueResolvingConfig extends DelegatingConfig {
   constructor(config, resolver, path, async) {
     super(config, path);
     const self = this;
@@ -32,4 +33,4 @@ module.exports = class ValueResolvingConfig extends DelegatingConfig {
       self, path,
     );
   }
-};
+}

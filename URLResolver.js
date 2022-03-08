@@ -1,9 +1,10 @@
-const _ = require('lodash');
-const Resolver = require('./Resolver');
-const SelectiveResolver = require('./SelectiveResolver');
-const PrefixSelector = require('./PrefixSelector');
+/* eslint-disable import/extensions */
+import _ from 'lodash');
+import Resolver from './Resolver.js';
+import SelectiveResolver from './SelectiveResolver.js';
+import PrefixSelector from './PrefixSelector.js';
 
-module.exports = class URLResolver extends SelectiveResolver {
+export default class URLResolver extends SelectiveResolver {
   constructor(selector, fetchArg) {
     super(selector || (new PrefixSelector('url.')));
     this.$fetch = fetchArg;
@@ -60,4 +61,4 @@ module.exports = class URLResolver extends SelectiveResolver {
     }
     return this.$fetch(url, opts).then((res) => res.json());
   }
-};
+}

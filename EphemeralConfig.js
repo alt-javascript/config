@@ -1,12 +1,10 @@
-const _ = require('lodash');
-
-module.exports = class EphemeralConfig {
+export default class EphemeralConfig {
   constructor(object, path) {
     const self = this;
     this.object = object;
     this.path = path;
     if (this.object) {
-      _.assignIn(self, this.object);
+      Object.assign(self, this.object);
     }
   }
 
@@ -33,4 +31,4 @@ module.exports = class EphemeralConfig {
     }
     return root !== null && root !== undefined;
   }
-};
+}

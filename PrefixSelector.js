@@ -1,7 +1,8 @@
-const _ = require('lodash');
-const Selector = require('./Selector');
+/* eslint-disable import/extensions */
+import _ from 'lodash';
+import Selector from './Selector.js';
 
-module.exports = class PrefixSelector extends Selector {
+export default class PrefixSelector extends Selector {
   constructor(prefix) {
     super();
     this.prefix = prefix;
@@ -18,4 +19,4 @@ module.exports = class PrefixSelector extends Selector {
   async asyncResolveValue(value) {
     return this.resolveValue(value);
   }
-};
+}

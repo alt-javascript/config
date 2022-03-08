@@ -1,13 +1,14 @@
-const npmconfig = require('config');
-const ValueResolvingConfig = require('./ValueResolvingConfig');
-const DelegatingResolver = require('./DelegatingResolver');
-const PlaceHolderResolver = require('./PlaceHolderResolver');
-const PlaceHolderSelector = require('./PlaceHolderSelector');
-const JasyptDecryptor = require('./JasyptDecryptor');
-const PrefixSelector = require('./PrefixSelector');
-const URLResolver = require('./URLResolver');
+/* eslint-disable import/extensions */
+import npmconfig from 'config';
+import ValueResolvingConfig from './ValueResolvingConfig.js';
+import DelegatingResolver from './DelegatingResolver.js';
+import PlaceHolderResolver from './PlaceHolderResolver.js';
+import PlaceHolderSelector from './PlaceHolderSelector.js';
+import JasyptDecryptor from './JasyptDecryptor.js';
+import PrefixSelector from './PrefixSelector.js';
+import URLResolver from './URLResolver.js';
 
-module.exports = class ConfigFactory {
+export default class ConfigFactory {
 
   static getGlobalRef() {
     let $globalref = null;
@@ -59,4 +60,4 @@ module.exports = class ConfigFactory {
     placeHolderResolver.reference = valueResolvingConfig;
     return valueResolvingConfig;
   }
-};
+}

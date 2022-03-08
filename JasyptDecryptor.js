@@ -1,10 +1,10 @@
-const Jasypt = require('jasypt');
+/* eslint-disable import/extensions */
+import Jasypt from 'jasypt';
+import Resolver from './Resolver.js';
+import SelectiveResolver from './SelectiveResolver.js';
+import PrefixSelector from './PrefixSelector.js';
 
-const Resolver = require('./Resolver');
-const SelectiveResolver = require('./SelectiveResolver');
-const PrefixSelector = require('./PrefixSelector');
-
-module.exports = class JasyptDecryptor extends SelectiveResolver {
+export default class JasyptDecryptor extends SelectiveResolver {
   constructor(selector, password) {
     super(selector || (new PrefixSelector('enc.')));
     this.jasypt = new Jasypt();
@@ -27,4 +27,4 @@ module.exports = class JasyptDecryptor extends SelectiveResolver {
     });
     return resolvedConfig;
   }
-};
+}

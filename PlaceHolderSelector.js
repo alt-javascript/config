@@ -1,6 +1,7 @@
-const Selector = require('./Selector');
+/* eslint-disable import/extensions */
+import Selector from './Selector.js';
 
-module.exports = class PlaceHolderSelector extends Selector {
+export default class PlaceHolderSelector extends Selector {
   // eslint-disable-next-line class-methods-use-this
   matches(value) {
     return typeof value === 'string'

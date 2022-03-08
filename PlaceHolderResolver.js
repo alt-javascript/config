@@ -1,8 +1,9 @@
-const Resolver = require('./Resolver');
-const SelectiveResolver = require('./SelectiveResolver');
-const PlaceHolderSelector = require('./PlaceHolderSelector');
+/* eslint-disable import/extensions */
+import Resolver from './Resolver.js';
+import SelectiveResolver from './SelectiveResolver.js';
+import PlaceHolderSelector from './PlaceHolderSelector.js';
 
-module.exports = class PlaceHolderResolver extends SelectiveResolver {
+export default class PlaceHolderResolver extends SelectiveResolver {
   constructor(selector, reference) {
     super(selector || (new PlaceHolderSelector()));
     this.reference = reference;
@@ -36,4 +37,4 @@ module.exports = class PlaceHolderResolver extends SelectiveResolver {
     });
     return resolvedConfig;
   }
-};
+}
