@@ -22,7 +22,7 @@ const configObject = {
     encrypted: 'enc.pxQ6z9s/LRpGB+4ddJ8bsq8RqELmhVU2',
     encryptedWithSecret: 'enc./emLGkD3cbfqoSPijGZ0jh1p1SYIHQeJ',
   },
-  'http://localhost/page1/': {
+  'http://127+0+0+1/page1/': {
     key: 'value1',
     keyL: 'valueL',
     one: 'one1',
@@ -33,7 +33,7 @@ const logger = LoggerFactory.getLogger('@alt-javascript/config/test/ValueResolvi
 
 global.window = {
   location: {
-    origin: 'http://localhost',
+    origin: 'http://127.0.0.1',
     pathname: '/page1/',
   },
 };
