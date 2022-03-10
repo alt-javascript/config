@@ -37,13 +37,18 @@
     "cucumber": "npx run-script-os",
     "cucumber:windows": ".\\node_modules\\.bin\\cucumber-js.cmd features\\*.feature --publish-quiet",
     "cucumber:macos:nix:default": "./node_modules/.bin/cucumber-js features\\*.feature --publish-quiet",
-    "nyc": "nyc --reporter=json-summary --reporter=text-summary --reporter=lcov npm run test"
+    "nyc": "nyc --reporter=json-summary --reporter=text-summary --reporter=lcov npm run test",
+    "bundle": "rollup -c",
+    "minify-iife": "terser dist/alt-javascript-configfactory-iife.js -c  ",
+    "minify-esm": "terser dist/alt-javascript-config-esm.js -c  ",
+    "build-iife": "npm run minify-iife -- -o dist/alt-javascript-configfactory-iife-min.js --source-map",
+    "build-esm": "npm run minify-esm -- -o dist/alt-javascript-config-esm-min.js --source-map",
+    "build": "npm run bundle && npm run build-iife && npm run build-esm"
   },
   "license": "MIT",
   "dependencies": {
     "config": "^3.3.6",
-    "jasypt": "^1.0.5",
-    "lodash": "^4.17.21"
+    "jasypt": "^1.0.5"
   },
   "devDependencies": {
     "@alt-javascript/boot": "^1.0.15",
@@ -60,6 +65,8 @@
     "mocha": "^9.0.2",
     "node-fetch": "^2.6.1",
     "nyc": "^15.1.0",
-    "run-script-os": "^1.1.6"
+    "rollup": "^2.69.2",
+    "run-script-os": "^1.1.6",
+    "terser": "^5.12.0"
   }
 }

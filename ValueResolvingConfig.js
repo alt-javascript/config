@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-import _ from 'lodash';
 import DelegatingConfig from './DelegatingConfig.js';
 
 export default class ValueResolvingConfig extends DelegatingConfig {
@@ -9,7 +8,7 @@ export default class ValueResolvingConfig extends DelegatingConfig {
     this.resolver = resolver;
     if (this.config && !async) {
       this.resolved_config = resolver.resolve(this.path == null ? config : this.config.get(path));
-      _.assignIn(self, this.resolved_config);
+      Object.assign(self, this.resolved_config);
     }
 
     ValueResolvingConfig.prototype.has = DelegatingConfig.prototype.has;

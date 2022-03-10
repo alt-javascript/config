@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-import _ from 'lodash';
 import Resolver from './Resolver.js';
 import SelectiveResolver from './SelectiveResolver.js';
 import PrefixSelector from './PrefixSelector.js';
@@ -54,10 +53,10 @@ export default class URLResolver extends SelectiveResolver {
       throw new Error('fetch is required');
     }
     const $headers = authorization ? { authorization } : {};
-    _.assignIn($headers, headers);
+    Object.assign($headers, headers);
     const opts = { method: method || 'get', headers: $headers };
     if (method && method?.toLowerCase() !== 'get' && method?.toLowerCase() !== 'head') {
-      _.assignIn(opts, JSON.stringify(body || {}));
+      Object.assign(opts, JSON.stringify(body || {}));
     }
     return this.$fetch(url, opts).then((res) => res.json());
   }
