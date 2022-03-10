@@ -33,6 +33,9 @@ export default class DelegatingConfig {
     } else {
       this.config = config;
     }
+    const originalConfig = this.config;
+    Object.assign(this, config);
+    this.config = originalConfig;
     this.path = path;
   }
 

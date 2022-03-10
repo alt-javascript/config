@@ -11,6 +11,9 @@ var ConfigFactory = (function () {
     }
 
     get(path, defaultValue) {
+      if (!(typeof this.object?.[path] === 'undefined')) {
+        return this.object?.[path];
+      }
       const pathSteps = path?.split('.') || [];
       let root = this.object;
       for (let i = 0; i < pathSteps.length && root !== null && root !== undefined; i++) {
@@ -26,6 +29,9 @@ var ConfigFactory = (function () {
     }
 
     has(path) {
+      if (!(typeof this.object?.[path] === 'undefined')) {
+        return true;
+      }
       const pathSteps = path?.split('.') || [];
       let root = this.object;
       for (let i = 0; i < pathSteps.length && root !== null && root !== undefined; i++) {
@@ -69,6 +75,9 @@ var ConfigFactory = (function () {
       } else {
         this.config = config;
       }
+      const originalConfig = this.config;
+      Object.assign(this, config);
+      this.config = originalConfig;
       this.path = path;
     }
 
@@ -302,6 +311,32 @@ var ConfigFactory = (function () {
   }
 
   /* eslint-disable import/extensions */
+  // import ValueResolvingConfig from './ValueResolvingConfig.js';
+
+  class WindowLocationConfig extends DelegatingConfig {
+
+    constructor(config, path) {
+      super(config, path);
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    has(path) {
+      return this.config.has(`${window.location.origin}${window.location.pathname}.${path}`)
+          || this.config.has(path);
+    }
+
+    get(path, defaultValue) {
+      if ((typeof defaultValue !== 'undefined') && this.has(path) === false) {
+        return defaultValue;
+      }
+      if (this.config.has(`${window.location.origin}${window.location.pathname}.${path}`)) {
+        return this.config.get(`${window.location.origin}${window.location.pathname}.${path}`);
+      }
+      return this.config.get(path);
+    }
+  }
+
+  /* eslint-disable import/extensions */
 
   class ConfigFactory {
     static getGlobalRef() {
@@ -351,7 +386,8 @@ var ConfigFactory = (function () {
         resolver || delegatingResolver);
 
       placeHolderResolver.reference = valueResolvingConfig;
-      return valueResolvingConfig;
+      const windowLocationConfig = new WindowLocationConfig(valueResolvingConfig);
+      return windowLocationConfig;
     }
   }
 

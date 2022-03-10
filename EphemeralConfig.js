@@ -9,6 +9,9 @@ export default class EphemeralConfig {
   }
 
   get(path, defaultValue) {
+    if (!(typeof this.object?.[path] === 'undefined')) {
+      return this.object?.[path];
+    }
     const pathSteps = path?.split('.') || [];
     let root = this.object;
     for (let i = 0; i < pathSteps.length && root !== null && root !== undefined; i++) {
@@ -24,6 +27,9 @@ export default class EphemeralConfig {
   }
 
   has(path) {
+    if (!(typeof this.object?.[path] === 'undefined')) {
+      return true;
+    }
     const pathSteps = path?.split('.') || [];
     let root = this.object;
     for (let i = 0; i < pathSteps.length && root !== null && root !== undefined; i++) {
