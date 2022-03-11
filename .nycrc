@@ -11,5 +11,9 @@
     "text-summary"
   ],
   "all": true,
-  "instrument": true
+  "instrument": true,
+    "exclude": [
+      "dist/**/*.js",
+      "coverage/**/*"
+    ]
 }

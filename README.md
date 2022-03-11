@@ -23,7 +23,7 @@ To use the module, substitute the named {config} module export, in place of the 
 exports other useful classes as well.
 
 ```javascript
-const {config} = require('@alt-javascript/config');
+import  { config } from '@alt-javascript/config' ;
 
 config.get('key');
 config.get('nested.key');
@@ -42,9 +42,9 @@ function, and HTTP options can be specified as in the example config file.  To a
 provide it by using `@alt-javascript/boot` to boot it into the global root context, where the package will detect it.
 
 ```javascript
-const {boot} = require('@alt-javascript/boot');
-const {config} = require('@alt-javascript/config');
-const fetch = require('node-fetch');
+import { boot } from '@alt-javascript/boot';
+import { config } from '@alt-javascript/config';
+import fetch from 'node-fetch';
 
 boot({config,fetch})
 const webdata = await config.fetch('pathToUrlPrefixedValue'); 
@@ -86,6 +86,54 @@ const webdata = await config.fetch('pathToUrlPrefixedValue');
   }
 }
 ```
+### Browser
+
+The module is also able to be used directly in the browser, in combination with the config module.
+You can either import the LoggerFactory globally as an IIFE (Immediately Invoked Function Expression),
+as follows:
+
+```html
+   <script src="https://cdn.jsdelivr.net/npm/@alt-javascript/config/dist/alt-javascript-configfactory-iife.js"></script>
+   <script>
+       var config = ConfigFactory.getConfig({
+           logging : {
+               format : 'json',
+               level : {
+                   '/' : 'info',
+                   '/MyPage': 'info'
+               }
+           }
+           "http://127+0+0+1:8080" : {
+               logging : {
+                   format : 'json',
+                   level : {
+                       '/' : 'info',
+                       '/MyPage' : 'debug'
+                   }
+               }             
+           }
+
+       })
+       var logger = LoggerFactory.getLogger('/MyPage',config);
+       logger.debug('Hello World');
+   </script>
+```
+
+Or import the ES6 module bundle from a module, as follows:
+
+```javascript
+import { ConfigFactory } from 'https://cdn.jsdelivr.net/npm/@alt-javascript/logger/dist/alt-javascript-config-esm.js'
+
+//...as above
+```
+
+Encrypted config is not supported in the browser (by default), as it is 
+inherently unsecure (there is no safe way to hide the salt).
+
+Additionally, config sections can be prefixed with the window location to allow
+site or environment specific configuration in the browser (periods must be replaced with
+a plus sign - so mysite.com => mysite+com).
+
 
 <a name="testing">Testability</a>
 -------------------------
@@ -95,10 +143,10 @@ and the module exports an EphemeralConfig that can source config paths from a pl
 object as follows, allowing you to assert varying configurations easily
 
 ```javascript
-const {
+import {
     EphemeralConfig, ValueResolvingConfig, PlaceHolderResolver, PlaceHolderSelector
     
-} = require('@alt-javascript/config');
+} from '@alt-javascript/config';
 
 const ephemeralConfig = new EphemeralConfig({
     key: 'value',
