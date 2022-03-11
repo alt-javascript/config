@@ -5,7 +5,7 @@ import PlaceHolderResolver from './PlaceHolderResolver.js';
 import PlaceHolderSelector from './PlaceHolderSelector.js';
 import PrefixSelector from './PrefixSelector.js';
 import URLResolver from './URLResolver.js';
-import WindowLocationConfig from "./WindowLocationConfig.js";
+import WindowLocationConfig from './WindowLocationConfig.js';
 
 export default class ConfigFactory {
   static getGlobalRef() {
