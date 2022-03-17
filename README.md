@@ -3,9 +3,9 @@ An Extensible Wrapper for Node Config
 
 [![NPM](https://nodei.co/npm/@alt-javascript/config.svg?downloads=true&downloadRank=true)](https://nodei.co/npm/@alt-javascript/config/)
 <br/>
-![Language Badge](https://img.shields.io/github/languages/top/craigparra/alt-config)
+![Language Badge](https://img.shields.io/github/languages/top/@alt-javascript/config)
 ![Package Badge](https://img.shields.io/npm/v/@alt-javascript/config) <br/>
-[release notes](https://github.com/craigparra/alt-config/blob/main/History.md)
+[release notes](https://github.com/@alt-javascript/config/blob/main/History.md)
 
 <a name="intro">Introduction</a>
 --------------------------------
