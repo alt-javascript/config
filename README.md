@@ -162,6 +162,6 @@ const config = new ValueResolvingConfig(ephemeralConfig,placeHolderResolver );
 <a name="license">License</a>
 -----------------------------
 
-May be freely distributed under the [MIT license](https://raw.githubusercontent.com/alt-javascript/config/master/LICENSE).
+May be freely distributed under the [MIT license](https://raw.githubusercontent.com/alt-javascript/config/main/LICENSE).
 
 Copyright (c) 2021 Craig Parravicini    
