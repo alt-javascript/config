@@ -311,24 +311,18 @@ var ConfigFactory = (function () {
   }
 
   /* eslint-disable import/extensions */
-  // import ValueResolvingConfig from './ValueResolvingConfig.js';
 
-  class WindowLocationConfig extends DelegatingConfig {
-
-    constructor(config, path) {
-      super(config, path);
-    }
-
+  class WindowLocationSelectiveConfig extends DelegatingConfig {
     // eslint-disable-next-line class-methods-use-this
     has(path) {
-      const location = `${window.location.origin}${window.location.pathname}`.replaceAll('.','+');
+      const location = `${window.location.origin}${window.location.pathname}`.replaceAll('.', '+');
 
       return this.config.has(`${location}.${path}`)
           || this.config.has(path);
     }
 
     get(path, defaultValue) {
-      const location = `${window.location.origin}${window.location.pathname}`.replaceAll('.','+');
+      const location = `${window.location.origin}${window.location.pathname}`.replaceAll('.', '+');
       if ((typeof defaultValue !== 'undefined') && this.has(path) === false) {
         return defaultValue;
       }
@@ -389,7 +383,7 @@ var ConfigFactory = (function () {
         resolver || delegatingResolver);
 
       placeHolderResolver.reference = valueResolvingConfig;
-      const windowLocationConfig = new WindowLocationConfig(valueResolvingConfig);
+      const windowLocationConfig = new WindowLocationSelectiveConfig(valueResolvingConfig);
       return windowLocationConfig;
     }
   }

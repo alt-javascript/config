@@ -1,11 +1,11 @@
 /* eslint-disable import/extensions */
-import ValueResolvingConfig from './ValueResolvingConfig.js';
-import DelegatingResolver from './DelegatingResolver.js';
-import PlaceHolderResolver from './PlaceHolderResolver.js';
-import PlaceHolderSelector from './PlaceHolderSelector.js';
-import PrefixSelector from './PrefixSelector.js';
-import URLResolver from './URLResolver.js';
-import WindowLocationConfig from './WindowLocationConfig.js';
+import ValueResolvingConfig from '../ValueResolvingConfig.js';
+import DelegatingResolver from '../DelegatingResolver.js';
+import PlaceHolderResolver from '../PlaceHolderResolver.js';
+import PlaceHolderSelector from '../PlaceHolderSelector.js';
+import PrefixSelector from '../PrefixSelector.js';
+import URLResolver from '../URLResolver.js';
+import WindowLocationSelectiveConfig from '../WindowLocationSelectiveConfig.js';
 
 export default class ConfigFactory {
   static getGlobalRef() {
@@ -55,7 +55,7 @@ export default class ConfigFactory {
       resolver || delegatingResolver);
 
     placeHolderResolver.reference = valueResolvingConfig;
-    const windowLocationConfig = new WindowLocationConfig(valueResolvingConfig);
+    const windowLocationConfig = new WindowLocationSelectiveConfig(valueResolvingConfig);
     return windowLocationConfig;
   }
 }

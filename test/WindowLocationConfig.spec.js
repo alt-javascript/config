@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import { assert } from 'chai';
 import { LoggerFactory } from '@alt-javascript/logger';
-import ConfigFactory from '../ConfigFactory-browser.js';
+import ConfigFactory from '../browser/ConfigFactory.js';
 
 process.env.PROVIDED_ENV_VAR = 'provided-index-value';
 

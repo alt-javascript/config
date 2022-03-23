@@ -1,7 +1,7 @@
 export default [
   // Monolithic ESM bundle for browser module implementation.
   {
-    input: 'index-browser.js',
+    input: 'browser/index.js',
     treeshake: true,
     output: {
       file: 'dist/alt-javascript-config-esm.js',
@@ -15,7 +15,7 @@ export default [
   },
   // IIFE bundle for browsers global import.
   {
-    input: 'ConfigFactory-browser.js',
+    input: 'browser/ConfigFactory.js',
     treeshake: true,
     output: {
       file: 'dist/alt-javascript-configfactory-iife.js',
