@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import npmconfig from 'config';
+import ConfigLoader from './ConfigLoader.js';
 import ValueResolvingConfig from './ValueResolvingConfig.js';
 import DelegatingResolver from './DelegatingResolver.js';
 import PlaceHolderResolver from './PlaceHolderResolver.js';
@@ -47,13 +47,14 @@ export default class ConfigFactory {
   }
 
   static getConfig(config, resolver, fetchArg) {
+    const configLoader = new ConfigLoader();
     const placeHolderResolver = new PlaceHolderResolver(new PlaceHolderSelector());
     const jasyptDecryptor = new JasyptDecryptor(new PrefixSelector('enc.'));
     const urlResolver = new URLResolver(new PrefixSelector('url.'), ConfigFactory.detectFetch(fetchArg));
     const delegatingResolver = new DelegatingResolver(
       [placeHolderResolver, jasyptDecryptor, urlResolver],
     );
-    const valueResolvingConfig = new ValueResolvingConfig(config || npmconfig,
+    const valueResolvingConfig = new ValueResolvingConfig(config || configLoader.loadConfig(),
       resolver || delegatingResolver);
 
     placeHolderResolver.reference = valueResolvingConfig;

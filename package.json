@@ -47,18 +47,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "config": "^3.3.6",
-    "jasypt": "^1.0.5"
+    "jasypt": "^1.0.5",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@alt-javascript/boot": "^1.0.15",
-    "@alt-javascript/logger": "^2.0.0",
+    "@alt-javascript/logger": "^2.0.5",
     "@cucumber/cucumber": "^7.3.0",
     "babel-eslint": "^10.1.0",
+    "c8": "^7.11.0",
     "chai": "^4.3.4",
     "cross-env": "^7.0.3",
     "cucumber": "^7.0.0-rc.0",
-    "c8": "^7.11.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cucumber": "^1.4.0",

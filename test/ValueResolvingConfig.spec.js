@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-import npmconfig from 'config';
 import { assert } from 'chai';
 import { LoggerFactory } from '@alt-javascript/logger';
 import {
@@ -10,7 +9,7 @@ process.env.PROVIDED_ENV_VAR = 'provided-index-value';
 
 const config = ConfigFactory.getConfig();
 const logger = LoggerFactory.getLogger('@alt-javascript/config/test/ValueResolvingConfig_spec');
-const secretconfig = new ValueResolvingConfig(npmconfig, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
+const secretconfig = new ValueResolvingConfig(config.config, new JasyptDecryptor(new PrefixSelector('enc.'), 'secret'));
 
 before(async () => {
   logger.debug('spec setup started');
@@ -67,9 +66,9 @@ describe('ValueResolvingConfig Specification', () => {
   });
 
   it('local-development env vars are resolved ', () => {
-    // assert.equal(npmconfig.get('providedEnvVar'), 'system',
+    // assert.equal(config.get('providedEnvVar'), 'system',
     // 'config.get(\'providedEnvVar\') == system');
     assert.equal(process.env.PROVIDED_ENV_VAR, 'provided-index-value', 'process.env.PROVIDED_ENV_VAR == provided-index-value');
-    assert.equal(npmconfig.get('missingEnvVar'), 'missing-local-value', 'config.get(\'missingEnvVar\') == missing-local-dev-value');
+    assert.equal(config.get('missingEnvVar'), 'missing-local-value', 'config.get(\'missingEnvVar\') == missing-local-value');
   });
 });

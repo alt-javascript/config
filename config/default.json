@@ -1,4 +1,8 @@
 {
-  "providedEnvVar": "provided-default-value",
-  "missingEnvVar": "missing-default-value"
+  "providedEnvVar": "${env.PROVIDED_ENV_VAR}",
+  "missingEnvVar": "${env.MISSING_ENV_VAR}",
+  "env" : {
+    "PROVIDED_ENV_VAR" : "provided-default-value",
+    "MISSING_ENV_VAR" : "missing-default-value"
+  }
 }

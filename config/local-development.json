@@ -10,6 +10,10 @@
      "encrypted" : "enc.pxQ6z9s/LRpGB+4ddJ8bsq8RqELmhVU2",
      "encryptedWithSecret" : "enc./emLGkD3cbfqoSPijGZ0jh1p1SYIHQeJ"
   },
-  "providedEnvVar": "provided-local-value",
-  "missingEnvVar": "missing-local-value"
+  "providedEnvVar": "${env.PROVIDED_ENV_VAR}",
+  "missingEnvVar": "${env.MISSING_ENV_VAR}",
+  "env" : {
+    "PROVIDED_ENV_VAR" : "provided-local-value",
+    "MISSING_ENV_VAR" : "missing-local-value"
+  }
 }

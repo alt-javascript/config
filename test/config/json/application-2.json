@@ -1,0 +1,9 @@
+{
+  "default": "default",
+  "application" : "application",
+  "environment" : "environment",
+  "env-instance" : "env-instance",
+  "local" : "default",
+  "local-development" : "default",
+  "application-profile-2" : "profile-2"
+}

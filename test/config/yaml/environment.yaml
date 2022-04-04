@@ -1,0 +1,8 @@
+default: "default"
+application : "application"
+environment : "environment"
+env-instance : "default"
+local : "default"
+local-development : "default"
+application-profile-1 : "default"
+application-profile-2 : "default"

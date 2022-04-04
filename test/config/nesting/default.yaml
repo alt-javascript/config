@@ -1,0 +1,10 @@
+#this is a comment
+level1:
+  level2:
+    key1: default #this is a comment
+    key2: default
+    list:
+      - default
+      - default
+      - default:
+          key3: default
