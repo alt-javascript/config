@@ -8,3 +8,5 @@ level1:
       - default
       - default:
           key3: default
+    list2:
+      - default

@@ -102,5 +102,12 @@ describe('ConfigLoader Specification', () => {
     const config = configLoader.loadConfig('test/config/nesting');
     assert.equal(config.level1.level2.key1, 'default', 'key1 is default');
     assert.equal(config.level1.level2.key2, 'application', 'key2 is application');
+    assert.equal(config.level1.level2.list[0], 'application', 'config.level1.level2.list[0] is application');
+    assert.equal(config.level1.level2.list[1], 'application', 'config.level1.level2.list[1] is application');
+    assert.equal(config.level1.level2.list[2].default.key3, 'default', 'config.level1.level3.list[2].default is default');
+
+    assert.equal(config.level1.level2.list2[0], 'application', 'config.level1.level2.list2[0] is application');
+    assert.equal(config.level1.level2.list2[1], 'application', 'config.level1.level2.list2[1] is application');
+
   });
 });
