@@ -11,7 +11,7 @@ An Extensible Config Package, supporting the usage elements of Spring Boot and N
 --------------------------------
 An extensible config package, supporting the usage elements of Spring Boot and Node "config", including:
 - json, yaml and Java property files,
-- cascading values over-rides using, NODE_ENV, NODE_APP_INSTANCE and NODE_PROFILES_ACTIVE
+- cascading value over-rides using, NODE_ENV, NODE_APP_INSTANCE and NODE_PROFILES_ACTIVE
 - placeholder resolution (or variable expansion),
 - encrypted values (via jasypt),
 - environment variables (via config.get("env.MY_VAR"),
@@ -40,7 +40,7 @@ config.get('unknown','use this instead'); // this does not throw an error
 The module follows the file loading and precedence rules of the popular
 [config](https://www.npmjs.com/package/config) defaults, with additional rules in the style of Spring Boot.
 
-Files are loaded and over-riden from the `config` folder in the following order:
+Files are loaded and over-ridden from the `config` folder in the following order:
 - default.( json | yml | yaml | props | properties )
 - application.( json | yml | yaml | props | properties )
 - {NODE_ENV}.( json | yml | yaml | props | properties )
