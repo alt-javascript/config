@@ -1,4 +1,4 @@
-An Extensible Wrapper for Node Config
+An Extensible Config Package, supporting the usage elements of Spring Boot and Node "config"
 =====================================
 
 [![NPM](https://nodei.co/npm/@alt-javascript/config.svg?downloads=true&downloadRank=true)](https://nodei.co/npm/@alt-javascript/config/)
@@ -9,16 +9,21 @@ An Extensible Wrapper for Node Config
 
 <a name="intro">Introduction</a>
 --------------------------------
-An extensible wrapper of the popular config package, supporting:
+An extensible config package, supporting the usage elements of Spring Boot and Node "config", including:
+- json, yaml and Java property files,
+- cascading values over-rides using, NODE_ENV, NODE_APP_INSTANCE and NODE_PROFILES_ACTIVE
 - placeholder resolution (or variable expansion),
-- encrypted values (via jasypt) 
+- encrypted values (via jasypt),
+- environment variables (via config.get("env.MY_VAR"),
+- command line parameters (via config.get("argv.MY_ARG"), config.get("execArgv") & config.get("execPath"))
 - default (or fallback) values, 
-- and optional asynchronous url fetching.
+- optional asynchronous url fetching,
+- and isomorphic import for in the browser (with window.location/url detection)
 
 <a name="usage">Usage</a>
 -------------------------
 
-To use the module, substitute the named {config} module export, in place of the popular 
+To use the module, substitute the named {config} module export, in place of the similar and popular 
 [config](https://www.npmjs.com/package/config) default &ndash; note, we use named exports, because the module
 exports other useful classes as well.
 
@@ -30,12 +35,48 @@ config.get('nested.key');
 config.get('unknown','use this instead'); // this does not throw an error
 ```
 
+### File Loading and Precedence
+
+The module follows the file loading and precedence rules of the popular
+[config](https://www.npmjs.com/package/config) defaults, with additional rules in the style of Spring Boot.
+
+Files are loaded and over-riden from the `config` folder in the following order:
+- default.( json | yml | yaml | props | properties )
+- application.( json | yml | yaml | props | properties )
+- {NODE_ENV}.( json | yml | yaml | props | properties )
+- {NODE_ENV}-{NODE_APP_INSTANCE}.( json | yml | yaml | props | properties )
+- {NODE_ENV}-{NODE_APP_INSTANCE}.( json | yml | yaml | props | properties )
+- {NODE_ENV}-{NODE_APP_INSTANCE}.( json | yml | yaml | props | properties )
+- application-{NODE_PROFILES_ACTIVE[0]}.( json | yml | yaml | props | properties )
+- application-{NODE_PROFILES_ACTIVE[1]}.( json | yml | yaml | props | properties )
+- environment variables (over-ridden into env)
+- commandline arguments (over-ridden into argv, execArgv and execPath)
+
+
+Environment variables and command line arguments, will over-ride values found in files, for example
+`env.MY_VAR=someValue` in a `application.properties` file, or 
+
+`local-development.yaml`
+```yaml
+env:
+  MY_VAR: someValue
+```
+
+will be over-ridden only if it exists on the host system, negating the need for .gitignore  
+dotenv (.env) files or setting local development environment variables or arguments.
+
+### Placeholders, encrypted values and remote fetching
+
 Config values that include the common `${placeholder}` syntax, will resolve the inline 
 placeholders, so the `config.get('placeholder')'` path below will return `start.one.two.end`.
 
 Config values that start with the prefix `enc.` will be decrypted with the 
 [jasypt](https://www.npmjs.com/package/jasypt) package port, with the passphrase being
 sourced from the `process.env.NODE_CONFIG_PASSPHRASE` environment variable.
+
+### Browser
+
+The module is also able to be used directly in the browser, in combination with the config module.
 
 Optionally, config values that start with the prefix `url.` can be fetched and resolved asynchronously with the `fetch` 
 function, and HTTP options can be specified as in the example config file.  To avoid bundling `node-fetch`, you need to

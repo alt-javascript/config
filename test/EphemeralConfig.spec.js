@@ -12,6 +12,7 @@ const configObject = {
     key: 'value',
     encrypted: 'enc.pxQ6z9s/LRpGB+4ddJ8bsq8RqELmhVU2',
     encryptedWithSecret: 'enc./emLGkD3cbfqoSPijGZ0jh1p1SYIHQeJ',
+    list: ['1','2','3']
   },
 };
 const ephemeralConfig = new EphemeralConfig(configObject);
@@ -68,6 +69,14 @@ describe('EphemeralConfig Specification', () => {
   it('config nested.encryptedWithSecret == hello world', () => {
     assert.equal(secretconfig.get('nested.encryptedWithSecret'), 'hello world', 'config nested.encryptedWithSecret == hello world');
     assert.equal(secretconfig.nested.encryptedWithSecret, 'hello world', 'config nested.encryptedWithSecret == hello world');
+  });
+  it('config nested.list == 1,2,3', () => {
+    assert.equal(secretconfig.get('nested.list.0'), '1', 'config nested.list.0 == 1');
+    assert.equal(secretconfig.get('nested.list.1'), '2', 'config nested.list.1 == 2');
+    assert.equal(secretconfig.get('nested.list.2'), '3', 'config nested.list.1 == 3');
+    assert.equal(secretconfig.nested.list[0], '1', 'config nested.list[0] == 1');
+    assert.equal(secretconfig.nested.list[1], '2', 'config nested.list[1] == 2');
+    assert.equal(secretconfig.nested.list[2], '3', 'config nested.list[2] == 3');
   });
   it('config unknown with default == hello world', () => {
     assert.equal(config.get('unknown', 'hello world'), 'hello world', 'config unknown with default == hello world');

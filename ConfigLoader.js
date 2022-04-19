@@ -65,11 +65,11 @@ export default class ConfigLoader {
     ];
 
     for (let i = 0; i < profiles.length; i++) {
-      precedence.push(`${dirpath}applictaion-${profiles[i]}.json`);
-      precedence.push(`${dirpath}applictaion-${profiles[i]}.yml`);
-      precedence.push(`${dirpath}applictaion-${profiles[i]}.yaml`);
-      precedence.push(`${dirpath}applictaion-${profiles[i]}.props`);
-      precedence.push(`${dirpath}applictaion-${profiles[i]}.properties`);
+      precedence.push(`${dirpath}application-${profiles[i]}.json`);
+      precedence.push(`${dirpath}application-${profiles[i]}.yml`);
+      precedence.push(`${dirpath}application-${profiles[i]}.yaml`);
+      precedence.push(`${dirpath}application-${profiles[i]}.props`);
+      precedence.push(`${dirpath}application-${profiles[i]}.properties`);
     }
 
     try {

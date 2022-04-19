@@ -46,6 +46,7 @@ describe('ConfigLoader Specification', () => {
 
     process.env.NODE_ENV = '';
     process.env.NODE_APP_INSTANCE = '';
+    process.env.NODE_PROFILES_ACTIVE = '';
 
     config = configLoader.loadConfig('test/config/json');
     assert.equal(config.local, 'local', 'local is local');
@@ -63,11 +64,12 @@ describe('ConfigLoader Specification', () => {
     assert.equal(config.application, 'application', 'application is application');
     assert.equal(config.environment, 'environment', 'environment is environment');
     assert.equal(config['env-instance'], 'env-instance', 'env-instance is env-instance');
-    assert.equal(config.local, 'default', 'local is default');
-    assert.equal(config['local-development'], 'default', 'local-development is default');
+    assert.equal(config.local, 'local', 'local is local');
+    assert.equal(config['local-development'], 'local-development', 'local-development is local-development');
 
     process.env.NODE_ENV = '';
     process.env.NODE_APP_INSTANCE = '';
+    process.env.NODE_PROFILES_ACTIVE = '';
 
     config = configLoader.loadConfig('test/config/yaml');
     assert.equal(config.local, 'local', 'local is local');
@@ -85,11 +87,12 @@ describe('ConfigLoader Specification', () => {
     assert.equal(config.application, 'application', 'application is application');
     assert.equal(config.environment, 'environment', 'environment is environment');
     assert.equal(config['env-instance'], 'env-instance', 'env-instance is env-instance');
-    assert.equal(config.local, 'default', 'local is default');
-    assert.equal(config['local-development'], 'default', 'local-development is default');
+    assert.equal(config.local, 'local', 'local is local');
+    assert.equal(config['local-development'], 'local-development', 'local-development is local-development');
 
     process.env.NODE_ENV = '';
     process.env.NODE_APP_INSTANCE = '';
+    process.env.NODE_PROFILES_ACTIVE = '';
 
     config = configLoader.loadConfig('test/config/properties');
     assert.equal(config.local, 'local', 'local is local');

@@ -27,8 +27,8 @@ export default class PropertiesParser {
             }
             nextmap[steps[j]] = value;
           } else {
-            nextmap[`${steps[j]}`] = {};
-            nextmap = nextmap[`${steps[j]}`];
+            nextmap[steps[j]] = {};
+            nextmap = nextmap[steps[j]];
           }
           Object.assign(object, keymap);
         }
